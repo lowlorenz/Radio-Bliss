@@ -25,6 +25,16 @@ llm = ChatGPT(api_key=openai_api_key)
 
 @app.route("/location", methods=["GET"])
 def location():
+    """
+    params:
+        start_long: float,
+        start_lat: float,
+        destination_long: float,
+        destination_lat: float,
+        distance: float
+    return:
+        (long: float, lat: float)
+    """
     start_long = float(request.args.get("start_long"))
     start_lat = float(request.args.get("start_lat"))
 
@@ -53,6 +63,13 @@ def funfacts():
 
 @app.route("/audioguide", methods=["GET"])
 def audioguide():
+    """
+    params:
+        long: float,
+        lat: float
+    return:
+        mp3
+    """
 
     tts = TTS(elevenlabs_api_key)
     wiki = WikiParser()
