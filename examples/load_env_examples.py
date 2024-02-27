@@ -1,6 +1,9 @@
 from dotenv import load_dotenv
+from pathlib import Path
 import os
 
-load_dotenv()
+dotenv_path = Path("../.env")
+load_dotenv(dotenv_path=dotenv_path)
+elevenlabs_api_key = os.getenv("ELEVENLABS_KEY")
 
-GCP_PROJECT_ID = os.getenv("GCP_PROJECT_ID")
+print(elevenlabs_api_key)
