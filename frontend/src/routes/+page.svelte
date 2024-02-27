@@ -9,5 +9,5 @@
 
 
 <RoutePlanner />
-<div id=bgimage></div>
+<!-- <div id=bgimage></div> -->
 

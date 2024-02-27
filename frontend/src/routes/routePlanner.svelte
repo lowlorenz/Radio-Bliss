@@ -8,8 +8,8 @@
 
     const synth = browser ? window.speechSynthesis : null;
 
-    var startLocation :location | string = ''
-    var destLocation :location | string = ''
+    var startLocation :location | string = 'Berlin'
+    var destLocation :location | string = 'Hamburg'
     var text: string = 'loading...'
 
     var progress:number = 0.5
@@ -49,8 +49,8 @@
     <MapView loc={displaylocation} start={startLocation} end={destLocation}/>
 
     <div id=routeplanner>
-        <LocationPicker label="Pick a start location" onlocationchange={loc=>startLocation=loc} placeholder="Berlin"/>
-        <LocationPicker label="Pick a destination" onlocationchange={loc=>destLocation=loc} placeholder="Hamburg"/>
+        <LocationPicker label="Pick a start location" onlocationchange={loc=>startLocation=loc} value="Berlin"/>
+        <LocationPicker label="Pick a destination" onlocationchange={loc=>destLocation=loc} value="Hamburg"/>
 
 
         <input type="range" id = rangeslider min="0" max="1" step="0.1" bind:value={progress}>
