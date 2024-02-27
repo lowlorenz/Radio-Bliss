@@ -1,9 +1,7 @@
 
 <script lang="ts">
-    import LocationPicker from "./locationPicker.svelte"
-    import MapView from "./mapView.svelte"
-    import RoutePlanner from "./routePlanner.svelte";
 
+    import RoutePlanner from "./routePlanner.svelte";
 
 </script>
 
@@ -15,8 +13,5 @@
 
     <RoutePlanner />
 
-    <div id=steeringwheel>
-        <img src="steering_wheel.png" alt="steeringwheel" width="650" height="500">
-    </div>
 </div>
 
