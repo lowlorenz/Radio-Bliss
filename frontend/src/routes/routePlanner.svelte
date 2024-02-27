@@ -7,12 +7,12 @@
     var startLocation :location | null = null
     var destLocation :location | null = null
 
-    var progress:number = 0
+    var progress:number = 5
+
+    $: console.log(progress)
 
     function startRoute(){
-
-        let location = getLocation(startLocation!, destLocation!, progress)
-
+        let location = getLocation(startLocation!, destLocation!, progress/10)
     }
 
 </script>
