@@ -44,24 +44,25 @@
 
 </script>
 
-<MapView loc={displaylocation}/>
+<div id=parentcontainer>
 
-<div id=routeplanner>
-    <LocationPicker label="Pick a start location" onlocationchange={loc=>startLocation=loc} placeholder={"Berlin"}/>
-    <LocationPicker label="Pick a destination" onlocationchange={loc=>destLocation=loc} placeholder={"Hamburg"}/>
+    <MapView loc={displaylocation} start={startLocation} end={destLocation}/>
+
+    <div id=routeplanner>
+        <LocationPicker label="Pick a start location" onlocationchange={loc=>startLocation=loc} placeholder={"Berlin"}/>
+        <LocationPicker label="Pick a destination" onlocationchange={loc=>destLocation=loc} placeholder={"Hamburg"}/>
 
 
-    <input type="range" id = rangeslider min="0" max="1" step="0.1" bind:value={progress}>
-    <p></p>
+        <input type="range" id = rangeslider min="0" max="1" step="0.1" bind:value={progress}>
+        <p></p>
 
-    <button id=routestart on:click={startRoute}>start</button>
+        <button id=routestart on:click={startRoute}>start</button>
 
-    <p>start: {startLocation?.lon} {startLocation?.lat}</p>
-    <p>destination: {destLocation?.lon} {destLocation?.lat}</p>
-    <p>output location: {displaylocation.lon} {displaylocation.lat}</p>
+        <p>start: {startLocation?.lon} {startLocation?.lat}</p>
+        <p>destination: {destLocation?.lon} {destLocation?.lat}</p>
+        <p>output location: {displaylocation.lon} {displaylocation.lat}</p>
 
-    <p style="max-width:50vw">{text}</p>
+        <p>{text}</p>
+    </div>
+
 </div>
-
-
-
