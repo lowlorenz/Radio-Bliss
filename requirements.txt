@@ -6,3 +6,4 @@ tqdm
 openai
 ipykernel
 newspaper4k
+Flask
