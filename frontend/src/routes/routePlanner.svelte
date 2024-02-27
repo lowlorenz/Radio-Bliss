@@ -60,7 +60,7 @@
     <p>destination: {destLocation?.lon} {destLocation?.lat}</p>
     <p>output location: {displaylocation.lon} {displaylocation.lat}</p>
 
-    <p>{text}</p>
+    <p style="max-width:50vw">{text}</p>
 </div>
 
 

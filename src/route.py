@@ -33,7 +33,6 @@ def get_coordinates(location):
         print(f"Error: {data['status']} - {data.get('error_message', '')}")
         return None, None
 
-
 def get_route(start, dest):
     # check for being string
     if type(start) == str:
@@ -84,7 +83,6 @@ def get_route(start, dest):
     encoded_polyline = response_json["routes"][0]["polyline"]["encodedPolyline"]
     decoded_polyline = polyline.decode(encoded_polyline)
     return decoded_polyline, overall_distance
-
 
 def get_point(polyline, frac_distance, overall_distance):
 

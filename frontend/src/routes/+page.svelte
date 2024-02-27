@@ -3,6 +3,7 @@
 
     import RoutePlanner from "./routePlanner.svelte";
 
+
 </script>
 
 
@@ -12,6 +13,8 @@
 <div id=parentcontainer>
 
     <RoutePlanner />
+
+    <div id=bgimage></div>
 
 </div>
 
