@@ -35,15 +35,21 @@ def location():
     return:
         (long: float, lat: float)
     """
-    start_long = float(request.args.get("start_long"))
-    start_lat = float(request.args.get("start_lat"))
+    start = request.args.get("start")
+    if not start:
+        start_long = float(request.args.get("start_long"))
+        start_lat = float(request.args.get("start_lat"))
+        start = (start_long, start_lat)
 
-    destination_long = float(request.args.get("destination_long"))
-    destination_lat = float(request.args.get("destination_lat"))
+    end = request.args.get("destination")
+    if not end:
+        destination_long = float(request.args.get("destination_long"))
+        destination_lat = float(request.args.get("destination_lat"))
+        end = (destination_long, destination_lat)
 
     traveled_distance = float(request.args.get("distance"))
 
-    route = get_route((start_long, start_lat), (destination_long, destination_lat))
+    route = get_route(start, end)
 
     lat, long = get_point(route, distance=traveled_distance)
 
