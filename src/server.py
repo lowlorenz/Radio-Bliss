@@ -52,7 +52,7 @@ def location():
     traveled_distance = float(request.args.get("distance"))
     route, overall_distance = get_route(start, end)
 
-    long, lat = get_point(
+    lat, long = get_point(
         route, frac_distance=traveled_distance, overall_distance=overall_distance
     )
 

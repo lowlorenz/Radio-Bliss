@@ -10,3 +10,4 @@ requests
 polyline
 geopy
 Flask
+flask_cors
