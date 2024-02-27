@@ -9,11 +9,5 @@
 
 
 <RoutePlanner />
-<div id=parentcontainer>
-
-    <RoutePlanner />
-
-    <div id=bgimage></div>
-
-</div>
+<div id=bgimage></div>
 
