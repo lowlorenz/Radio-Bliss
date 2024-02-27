@@ -33,24 +33,23 @@ def get_coordinates(location):
         return None, None
 
 
-@lru_cache
+@lru_cache(maxsize=1000)
 def get_route(start, dest):
     # check for being string
     if type(start) == str:
         start = get_coordinates(start)
     if type(dest) == str:
         dest = get_coordinates(dest)
-
     # Define the request payload
     payload = {
         "origin": {
             "location": {
-                "latLng": {"latitude": f"{start[0]}", "longitude": f"{start[1]}"}
+                "latLng": {"latitude": f"{start["lat"]}", "longitude": f"{start["long"]}"}
             }
         },
         "destination": {
             "location": {
-                "latLng": {"latitude": f"{dest[0]}", "longitude": f"{dest[1]}"}
+                "latLng": {"latitude": f"{dest["lat"]}", "longitude": f"{dest["long"]}"}
             }
         },
         "travelMode": "DRIVE",
