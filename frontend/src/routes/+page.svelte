@@ -2,6 +2,7 @@
 <script lang="ts">
     import LocationPicker from "./locationPicker.svelte"
     import MapView from "./mapView.svelte"
+    import RoutePlanner from "./routePlanner.svelte";
 
 </script>
 
@@ -11,9 +12,6 @@
 
 <div id=parentcontainer>
     <MapView/>
-    <div id=routeplanner>
-        <LocationPicker label="Pick a start location"/>
-        <LocationPicker label="Pick a destination"/>
-    </div>
+    <RoutePlanner/>
 </div>
 
