@@ -7,5 +7,13 @@
 
 <h1>Welcome to Radio-Bliss</h1>
 
+
 <RoutePlanner />
+<div id=parentcontainer>
+
+    <RoutePlanner />
+
+    <div id=bgimage></div>
+
+</div>
 
