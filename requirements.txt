@@ -6,3 +6,6 @@ tqdm
 openai
 ipykernel
 newspaper4k
+requests
+polyline
+geopy
