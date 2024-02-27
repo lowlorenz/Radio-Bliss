@@ -7,7 +7,6 @@
 
     var startLocation :location | null = null
     var destLocation :location | null = null
-    var location: location | null = null
     var text: string = 'loading...'
 
     var progress:number = 5
@@ -19,8 +18,13 @@
     function startRoute(){
         getLocation(startLocation!, destLocation!, progress)
             .then(loc=>{
-                location = loc
+                displaylocation = loc
                 return loc;
+            })
+            .catch(err=>{
+                console.log(err)
+                displaylocation = {name:"path", lat: startLocation!.lat * (1-progress) + destLocation!.lat * (progress), lon: startLocation!.lon * (1-progress) + destLocation!.lon * (progress/10)}
+                return displaylocation;
             })
             .then(loc=>getFunFacts(loc))
             .then(facts=>{
@@ -45,7 +49,7 @@
 
     <p>start: {startLocation?.lon} {startLocation?.lat}</p>
     <p>destination: {destLocation?.lon} {destLocation?.lat}</p>
-    <p>output location: {location}</p>
+    <p>output location: {displaylocation.lon} {displaylocation.lat}</p>
 
     <p>{text}</p>
 </div>
