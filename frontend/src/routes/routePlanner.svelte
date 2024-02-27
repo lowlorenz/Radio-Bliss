@@ -3,6 +3,7 @@
     import { getLocation } from "./api";
     import type { location } from "./lcoation_search";
     import LocationPicker from "./locationPicker.svelte"
+    import MapView from "./mapView.svelte";
 
     var startLocation :location | null = null
     var destLocation :location | null = null
@@ -11,11 +12,17 @@
 
     $: console.log(progress)
 
+    let displaylocation = {name:"Berlin", lat:52, lon:13}
+
     function startRoute(){
         let location = getLocation(startLocation!, destLocation!, progress/10)
+        
+        displaylocation = {name:"path", lat: startLocation!.lat * (1-progress/10) + destLocation!.lat * (progress/10), lon: startLocation!.lon * (1-progress/10) + destLocation!.lon * (progress/10)}
     }
 
 </script>
+
+<MapView loc={displaylocation}/>
 
 <div id=routeplanner>
     <LocationPicker label="Pick a start location" onlocationchange={loc=>startLocation=loc} placeholder={"Berlin"}/>

@@ -4,6 +4,7 @@
     import MapView from "./mapView.svelte"
     import RoutePlanner from "./routePlanner.svelte";
 
+
 </script>
 
 
@@ -11,7 +12,7 @@
 
 
 <div id=parentcontainer>
-    <MapView/>
-    <RoutePlanner/>
+
+    <RoutePlanner />
 </div>
 
