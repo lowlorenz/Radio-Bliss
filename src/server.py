@@ -54,6 +54,7 @@ def location():
 
     results = jsonify({"long": long, "lat": lat})
     results.headers.add("Access-Control-Allow-Origin", "*")
+    print(results)
     return results
 
 

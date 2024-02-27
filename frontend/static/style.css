@@ -42,11 +42,6 @@ input{
 
 
 #mapview{
-    /* height:90vh;
-    width:60vh;
-    box-sizing: border-box;
-    background-color: aquamarine;
-    */
     border-radius: 2em;
     border: 1em solid silver;
 }
@@ -68,4 +63,11 @@ input{
 h1{
     font-size: 3em;
     margin: 0;
+}
+
+#steeringwheel{
+    position: fixed;
+    bottom: -30vh;
+    width: 400vh;
+    left:-50vw;
 }

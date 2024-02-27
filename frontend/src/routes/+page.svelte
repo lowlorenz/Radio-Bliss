@@ -14,5 +14,9 @@
 <div id=parentcontainer>
 
     <RoutePlanner />
+
+    <div id=steeringwheel>
+        <img src="steering_wheel.png" alt="steeringwheel" width="650" height="500">
+    </div>
 </div>
 
