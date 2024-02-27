@@ -12,6 +12,7 @@ load_dotenv(dotenv_path=dotenv_path)
 google_api_key = os.getenv("GOOGLE")
 
 
+@lru_cache(maxsize=128)
 def get_coordinates(location):
     # distance in km
     # Construct the request URL
@@ -33,7 +34,6 @@ def get_coordinates(location):
         return None, None
 
 
-@lru_cache(maxsize=1000)
 def get_route(start, dest):
     # check for being string
     if type(start) == str:
@@ -44,12 +44,12 @@ def get_route(start, dest):
     payload = {
         "origin": {
             "location": {
-                "latLng": {"latitude": f"{start["lat"]}", "longitude": f"{start["long"]}"}
+                "latLng": {"latitude": f"{start['lat']}", "longitude": f"{start['long']}"}
             }
         },
         "destination": {
             "location": {
-                "latLng": {"latitude": f"{dest["lat"]}", "longitude": f"{dest["long"]}"}
+                "latLng": {"latitude": f"{dest['lat']}", "longitude": f"{dest['long']}"}
             }
         },
         "travelMode": "DRIVE",

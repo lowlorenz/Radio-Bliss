@@ -4,6 +4,9 @@
     import type { location } from "./lcoation_search";
     import LocationPicker from "./locationPicker.svelte"
     import MapView from "./mapView.svelte";
+    import { browser } from '$app/environment';
+
+    const synth = browser ? window.speechSynthesis : null;
 
     var startLocation :location | null = null
     var destLocation :location | null = null
@@ -16,6 +19,7 @@
     let displaylocation = {name:"Berlin", lat:52, lon:13}
 
     function startRoute(){
+        text = "loading..."
         getLocation(startLocation!, destLocation!, progress)
             .then(loc=>{
                 displaylocation = loc
@@ -29,6 +33,11 @@
             .then(loc=>getFunFacts(loc))
             .then(facts=>{
                 text = facts.text;
+                if (synth) {
+                    synth.cancel();
+                    const utterThis = new SpeechSynthesisUtterance(facts.text);
+                    synth.speak(utterThis);
+                }
             })
     }
 
