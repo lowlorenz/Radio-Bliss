@@ -12,7 +12,7 @@ export const template_locations=[
 ]
 
 
-export function location_search(req: string){
+export function location_completion(req: string){
     return template_locations.filter((location)=>{
         return location.toLowerCase().includes(req.toLowerCase())
     })

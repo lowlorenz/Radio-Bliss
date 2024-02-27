@@ -1,0 +1,47 @@
+body{
+    background-color: black;
+    color:white;
+    font-family: monospace;
+    text-align: center;
+    margin-top: 8em;
+
+}
+
+#parentcontainer{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 6em;
+}
+
+#routeplanner{
+    display: block;
+    text-align: left;
+}
+
+#mapview{
+    height:90vh;
+    width:60vh;
+    box-sizing: border-box;
+    background-color: aquamarine;
+    border-radius: 2em;
+    border: 1em solid silver;
+}
+
+.completions{
+    position: absolute;
+    background-color: black;
+    color:silver;
+    margin:1em;
+    border-radius: 1em;
+    border:.1em solid silver;
+    padding: .1em;
+    cursor: pointer;
+}
+.completions>p:hover{
+    color: white;
+    background-color: silver;
+}
+h1{
+    font-size: 3em;
+    margin: 0;
+}
