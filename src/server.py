@@ -47,7 +47,9 @@ def location():
 
     lat, long = get_point(route, distance=traveled_distance)
 
-    return jsonify({"long": long, "lat": lat})
+    results = jsonify({"long": long, "lat": lat})
+    results.headers.add("Access-Control-Allow-Origin", "*")
+    return results
 
 
 @app.route("/funfacts", methods=["GET"])
@@ -88,4 +90,6 @@ def audioguide():
     with open("/tmp/output.mp3", "wb") as out:
         out.write(audio)
 
-    return send_file("/tmp/output.mp3", mimetype="audio/mp3")
+    results = send_file("/tmp/output.mp3", mimetype="audio/mp3")
+    results.headers.add("Access-Control-Allow-Origin", "*")
+    return results
