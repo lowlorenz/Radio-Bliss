@@ -9,7 +9,7 @@ class WikiParser:
 
     @lru_cache(maxsize=1000)
     def get_articles(self, long, lat):
-        articles = wikipedia.geosearch(long, lat, results=10, radius=10_000)
+        articles = wikipedia.geosearch(long, lat, results=1, radius=10_000)
         return [wikipedia.page(article).content for article in articles]
 
     @lru_cache(maxsize=1000)

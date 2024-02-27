@@ -79,12 +79,18 @@ def get_route(start, dest):
         headers=headers,
     ).json()
 
+    overall_distance = response_json["routes"][0]["distanceMeters"] / 1000
     encoded_polyline = response_json["routes"][0]["polyline"]["encodedPolyline"]
     decoded_polyline = polyline.decode(encoded_polyline)
-    return decoded_polyline
+    return decoded_polyline, overall_distance
 
 
-def get_point(polyline, distance):
+def get_point(polyline, frac_distance, overall_distance):
+
+    # from 0 to 1
+
+    assert frac_distance <= 1.0 and frac_distance >= 0
+    distance = overall_distance*frac_distance
 
     # Initialize variables
     distance_traveled = 0
