@@ -20,6 +20,8 @@ input{
 
 #routeplanner{
     display: block;
+    position: absolute;
+    left:40vw;
     text-align: left;
 }
 
@@ -30,7 +32,6 @@ input{
 
 }
 
-
 #routestart{
     all:unset;
     font-size: 1.5em;
@@ -38,13 +39,14 @@ input{
     padding: .3em;
     border-radius: .3em;
     cursor: pointer;
-
 }
 
 
 #mapview{
+    position: absolute;
     border-radius: 2em;
     border: 1em solid silver;
+    left:7vw;
 }
 
 .completions{

@@ -1,8 +1,6 @@
-
 <script lang="ts">
 
     import RoutePlanner from "./routePlanner.svelte";
-
 
 </script>
 
