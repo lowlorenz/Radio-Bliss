@@ -35,19 +35,27 @@ def location():
     return:
         (long: float, lat: float)
     """
-    start_long = float(request.args.get("start_long"))
-    start_lat = float(request.args.get("start_lat"))
+    start = request.args.get("start")
+    if not start:
+        start_long = float(request.args.get("start_long"))
+        start_lat = float(request.args.get("start_lat"))
+        start = (start_long, start_lat)
 
-    destination_long = float(request.args.get("destination_long"))
-    destination_lat = float(request.args.get("destination_lat"))
+    end = request.args.get("destination")
+    if not end:
+        destination_long = float(request.args.get("destination_long"))
+        destination_lat = float(request.args.get("destination_lat"))
+        end = (destination_long, destination_lat)
 
     traveled_distance = float(request.args.get("distance"))
 
-    route, overall_distance = get_route((start_long, start_lat), (destination_long, destination_lat))
+    route, overall_distance = get_route(start, end)
 
     long, lat = get_point(route, frac_distance=traveled_distance, overall_distance=overall_distance)
 
-    return jsonify({"long": long, "lat": lat})
+    results = jsonify({"long": long, "lat": lat})
+    results.headers.add("Access-Control-Allow-Origin", "*")
+    return results
 
 
 @app.route("/funfacts", methods=["GET"])
@@ -88,4 +96,6 @@ def audioguide():
     with open("/tmp/output.mp3", "wb") as out:
         out.write(audio)
 
-    return send_file("/tmp/output.mp3", mimetype="audio/mp3")
+    results = send_file("/tmp/output.mp3", mimetype="audio/mp3")
+    results.headers.add("Access-Control-Allow-Origin", "*")
+    return results

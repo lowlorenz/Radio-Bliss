@@ -1,0 +1,73 @@
+body{
+    background-color: black;
+    color:white;
+    font-family: monospace;
+    text-align: center;
+    margin-top: 8em;
+    font-size: 1.5em;
+}
+
+input{
+    font-size: 1em;
+}
+
+#parentcontainer{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 6em;
+}
+
+#routeplanner{
+    display: block;
+    text-align: left;
+}
+
+
+#rangeslider{
+    width: 80%;
+    margin: 1em;
+
+}
+
+
+#routestart{
+    all:unset;
+    font-size: 1.5em;
+    background-color:chocolate;
+    padding: .3em;
+    border-radius: .3em;
+    cursor: pointer;
+    
+}
+
+
+#mapview{
+    height:90vh;
+    width:60vh;
+    box-sizing: border-box;
+    background-color: aquamarine;
+    border-radius: 2em;
+    border: 1em solid silver;
+    background-image: url('./mapsimage.png');
+    background-position: -800px -70px;
+    background-size: 300%;
+}
+
+.completions{
+    position: absolute;
+    background-color: black;
+    color:silver;
+    margin:1em;
+    border-radius: 1em;
+    border:.1em solid silver;
+    padding: .1em;
+    cursor: pointer;
+}
+.completions>p:hover{
+    color: white;
+    background-color: silver;
+}
+h1{
+    font-size: 3em;
+    margin: 0;
+}
