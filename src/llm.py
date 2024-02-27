@@ -3,6 +3,7 @@ import openai
 from typing import Optional
 from wiki import WikiParser
 import random
+from functools import lru_cache
 
 
 class ChatGPT:
@@ -18,7 +19,8 @@ class ChatGPT:
             api_key=api_key,
             base_url='https://llms.azurewebsites.net'
         )
-    
+
+    @lru_cache(maxsize=1000)
     def get_funfacts(self, background_info: str, num_sentences: int = 3) -> str:
         response = self.client.chat.completions.create(
             model="gpt-3.5",
