@@ -50,15 +50,20 @@ def location():
     return jsonify({"long": long, "lat": lat})
 
 
-
 @app.route("/funfacts", methods=["GET"])
 def funfacts():
+    """
+    params:
+        long: float,
+        lat: float
+    return:
+        text: str
+    """
     long = request.args.get("long")
     lat = request.args.get("lat")
     articles = wiki.get_articles(long, lat)
     text = llm.get_funfacts("".join(articles), 3)
     return jsonify({"text": text})
-
 
 
 @app.route("/audioguide", methods=["GET"])
