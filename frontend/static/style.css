@@ -25,6 +25,9 @@ body{
     background-color: aquamarine;
     border-radius: 2em;
     border: 1em solid silver;
+    background-image: url('./mapsimage.png');
+    background-position: -800px -70px;
+    background-size: 300%;
 }
 
 .completions{

@@ -4,9 +4,11 @@
     import { location_completion } from "./lcoation_search";
     export var label:string
 
+    import { tick } from "svelte";
+
     var input:HTMLInputElement
     var completion : HTMLDivElement
-    let options = []
+    let options :string[] = []
 
     function on_input(){
         options = location_completion(input.value)
@@ -20,15 +22,14 @@
                 options = []
             }
             completion.appendChild(div)
+        
         }
     }
 
 
-
-
 </script>
 
-<input type="text" id="locsearch" bind:this={input} on:input={on_input} on:blur={()=>options=[]}>
+<input type="text" id="locsearch" bind:this={input} on:input={on_input} on:blur={()=>options}>
 <label for="locsearch">{label}</label>
 <div bind:this={completion} class=completions style={"display:" + (options.length == 0 ? "none" : "block")}></div>
 
