@@ -2,5 +2,7 @@ python-dotenv
 black
 elevenlabs==0.3.0b0
 wikipedia
-newspaper
 tqdm
+openai
+ipykernel
+newspaper4k
