@@ -43,9 +43,9 @@ def location():
 
     traveled_distance = float(request.args.get("distance"))
 
-    route = get_route((start_long, start_lat), (destination_long, destination_lat))
+    route, overall_distance = get_route((start_long, start_lat), (destination_long, destination_lat))
 
-    lat, long = get_point(route, distance=traveled_distance)
+    long, lat = get_point(route, frac_distance=traveled_distance, overall_distance=overall_distance)
 
     return jsonify({"long": long, "lat": lat})
 
