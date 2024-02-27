@@ -9,7 +9,7 @@
     var destLocation :location | null = null
     var text: string = 'loading...'
 
-    var progress:number = 5
+    var progress:number = 0.5
 
     $: console.log(progress)
 
@@ -23,7 +23,7 @@
             })
             .catch(err=>{
                 console.log(err)
-                displaylocation = {name:"path", lat: startLocation!.lat * (1-progress) + destLocation!.lat * (progress), lon: startLocation!.lon * (1-progress) + destLocation!.lon * (progress/10)}
+                displaylocation = {name:"path", lat: startLocation!.lat * (1-progress) + destLocation!.lat * (progress), lon: startLocation!.lon * (1-progress) + destLocation!.lon * (progress)}
                 return displaylocation;
             })
             .then(loc=>getFunFacts(loc))
