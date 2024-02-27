@@ -1,2 +1,3 @@
 dotenv
 black
+newspaper4k
