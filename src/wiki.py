@@ -5,11 +5,11 @@ wikipedia.set_lang("en")
 
 class WikiParser:
 
-    def get_articles(long, lat):
+    def get_articles(self, long, lat):
         articles = wikipedia.geosearch(long, lat, results=10, radius=10_000)
         return [wikipedia.page(article).content for article in articles]
 
-    def get_summaries(long, lat):
+    def get_summaries(self, long, lat):
         articles = wikipedia.geosearch(long, lat, results=10, radius=10_000)
         return [wikipedia.page(article).summary for article in articles]
 
