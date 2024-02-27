@@ -13,18 +13,26 @@
     function on_input(){
         options = location_completion(input.value)
         completion.innerHTML = ""
+        
+        if (options.length == 1){
+            pick_location(options[0])
+        }
+
         for (let option of options){
             let div = document.createElement("p")
             div.innerHTML = option.name
             div.onclick = function(){
-                input.value = option.name
-                onlocationchange(option)
-                completion.innerHTML = ""
-                options = []
+                pick_location(option)
             }
-            completion.appendChild(div)
-        
+            completion.appendChild(div)   
         }
+    }
+
+    function pick_location(loc:location){
+        input.value = loc.name
+        onlocationchange(loc)
+        completion.innerHTML = ""
+        options = []
     }
 
 
