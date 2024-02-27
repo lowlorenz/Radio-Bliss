@@ -18,8 +18,8 @@
 </script>
 
 <div id=routeplanner>
-    <LocationPicker label="Pick a start location" onlocationchange={loc=>startLocation=loc}/>
-    <LocationPicker label="Pick a destination" onlocationchange={loc=>destLocation=loc}/>
+    <LocationPicker label="Pick a start location" onlocationchange={loc=>startLocation=loc} placeholder={"Berlin"}/>
+    <LocationPicker label="Pick a destination" onlocationchange={loc=>destLocation=loc} placeholder={"Hamburg"}/>
 
 
     <input type="range" id = rangeslider min="1" max="10" bind:value={progress}>

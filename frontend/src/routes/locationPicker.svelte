@@ -1,19 +1,30 @@
 
 <script lang="ts">
+    import { tick } from "svelte";
+
 
     import { location_completion, type location } from "./lcoation_search";
+    import { browser } from "$app/environment";
     export var label:string
 
     export var onlocationchange:(loc:location)=>void
+
+
+    export var placeholder:string|undefined = undefined
+
+
+
 
     var input:HTMLInputElement
     var completion : HTMLDivElement
     let options :location[] = []
 
+
+
     function on_input(){
         options = location_completion(input.value)
         completion.innerHTML = ""
-        
+
         if (options.length == 1){
             pick_location(options[0])
         }
@@ -34,7 +45,12 @@
         completion.innerHTML = ""
         options = []
     }
-
+    tick().then(()=>{
+        if ( browser && placeholder != undefined){
+            input.value=placeholder
+            on_input()
+        }
+    })
 
 </script>
 
