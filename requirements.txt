@@ -3,3 +3,5 @@ black
 elevenlabs==0.3.0b0
 openai
 ipykernel
+newspaper4k
+
