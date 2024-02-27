@@ -78,6 +78,8 @@ def get_route(start, dest):
         headers=headers,
     ).json()
 
+    print(response_json)
+
     overall_distance = response_json["routes"][0]["distanceMeters"] / 1000
     encoded_polyline = response_json["routes"][0]["polyline"]["encodedPolyline"]
     decoded_polyline = polyline.decode(encoded_polyline)

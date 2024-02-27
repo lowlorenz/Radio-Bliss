@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask, request, jsonify, send_file
+from flask_cors import CORS
 from dotenv import load_dotenv
 from pathlib import Path
 from llm import ChatGPT
@@ -18,6 +19,7 @@ openai_api_key = os.getenv("OPENAI")
 
 route = None
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})
 tts = TTS(elevenlabs_api_key)
 wiki = WikiParser()
 llm = ChatGPT(api_key=openai_api_key)
