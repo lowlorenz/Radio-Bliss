@@ -1,12 +1,14 @@
 
 <script lang='ts'>
-    import { getLocation } from "./api";
+    import { getFunFacts, getLocation } from "./api";
     import type { location } from "./lcoation_search";
     import LocationPicker from "./locationPicker.svelte"
     import MapView from "./mapView.svelte";
 
     var startLocation :location | null = null
     var destLocation :location | null = null
+    var location: location | null = null
+    var text: string = 'loading...'
 
     var progress:number = 5
 
@@ -15,10 +17,17 @@
     let displaylocation = {name:"Berlin", lat:52, lon:13}
 
     function startRoute(){
-        let location = getLocation(startLocation!, destLocation!, progress/10)
-        
-        displaylocation = {name:"path", lat: startLocation!.lat * (1-progress/10) + destLocation!.lat * (progress/10), lon: startLocation!.lon * (1-progress/10) + destLocation!.lon * (progress/10)}
+        getLocation(startLocation!, destLocation!, progress)
+            .then(loc=>{
+                location = loc
+                return loc;
+            })
+            .then(loc=>getFunFacts(loc))
+            .then(facts=>{
+                text = facts.text;
+            })
     }
+
 
 </script>
 
@@ -29,11 +38,16 @@
     <LocationPicker label="Pick a destination" onlocationchange={loc=>destLocation=loc} placeholder={"Hamburg"}/>
 
 
-    <input type="range" id = rangeslider min="1" max="10" bind:value={progress}>
+    <input type="range" id = rangeslider min="0" max="1" step="0.1" bind:value={progress}>
     <p></p>
 
     <button id=routestart on:click={startRoute}>start</button>
 
+    <p>start: {startLocation?.lon} {startLocation?.lat}</p>
+    <p>destination: {destLocation?.lon} {destLocation?.lat}</p>
+    <p>output location: {location}</p>
+
+    <p>{text}</p>
 </div>
 
 
