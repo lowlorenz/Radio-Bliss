@@ -6,10 +6,7 @@ tqdm
 openai
 ipykernel
 newspaper4k
-<<<<<<< HEAD
 requests
 polyline
 geopy
-=======
 Flask
->>>>>>> d64879c (fixed argument error in wiki class and implemented server)
