@@ -1,7 +1,8 @@
 
+import {type location } from "./lcoation_search";
 
-async function getLocation(startLong: number, startLat: number, destinationLong: number, destinationLat: number, distance: number): Promise<{ long: number, lat: number }> {
-    const response = await fetch(`/location?start_long=${startLong}&start_lat=${startLat}&destination_long=${destinationLong}&destination_lat=${destinationLat}&distance=${distance}`, {
+export async function getLocation(start:location, end:location, distance: number): Promise<{ long: number, lat: number }> {
+    const response = await fetch(`/location?start_long=${start.lon}&start_lat=${start.lat}&destination_long=${end.lon}&destination_lat=${end.lat}&distance=${distance}`, {
         method: 'GET',
     });
     if (!response.ok) {
@@ -11,8 +12,8 @@ async function getLocation(startLong: number, startLat: number, destinationLong:
 }
 
 
-async function getFunFacts(long: number, lat: number): Promise<{ text: string }> {
-    const response = await fetch(`/funfacts?long=${long}&lat=${lat}`, {
+export async function getFunFacts(loc:location): Promise<{ text: string }> {
+    const response = await fetch(`/funfacts?long=${loc.lon}&lat=${loc.lat}`, {
         method: 'GET',
     });
     if (!response.ok) {
@@ -22,8 +23,8 @@ async function getFunFacts(long: number, lat: number): Promise<{ text: string }>
 }
 
 
-async function getAudioGuide(long: number, lat: number): Promise<Blob> {
-    const response = await fetch(`/audioguide?long=${long}&lat=${lat}`, {
+export async function getAudioGuide(long:location): Promise<Blob> {
+    const response = await fetch(`/audioguide?long=${long.lon}&lat=${long.lat}`, {
         method: 'GET',
     });
     if (!response.ok) {

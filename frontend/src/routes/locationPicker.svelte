@@ -1,23 +1,24 @@
 
 <script lang="ts">
 
-    import { location_completion } from "./lcoation_search";
+    import { location_completion, type location } from "./lcoation_search";
     export var label:string
 
-    import { tick } from "svelte";
+    export var onlocationchange:(loc:location)=>void
 
     var input:HTMLInputElement
     var completion : HTMLDivElement
-    let options :string[] = []
+    let options :location[] = []
 
     function on_input(){
         options = location_completion(input.value)
         completion.innerHTML = ""
         for (let option of options){
             let div = document.createElement("p")
-            div.innerHTML = option
+            div.innerHTML = option.name
             div.onclick = function(){
-                input.value = option
+                input.value = option.name
+                onlocationchange(option)
                 completion.innerHTML = ""
                 options = []
             }

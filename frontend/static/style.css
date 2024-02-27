@@ -23,6 +23,23 @@ input{
 }
 
 
+#rangeslider{
+    width: 80%;
+    margin: 1em;
+
+}
+
+
+#routestart{
+    all:unset;
+    font-size: 1.5em;
+    background-color:chocolate;
+    padding: .3em;
+    border-radius: .3em;
+    cursor: pointer;
+    
+}
+
 
 #mapview{
     height:90vh;
