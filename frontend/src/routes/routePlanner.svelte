@@ -8,15 +8,13 @@
 
     const synth = browser ? window.speechSynthesis : null;
 
-    var startLocation :location | null = null
-    var destLocation :location | null = null
+    var startLocation :location | string = ''
+    var destLocation :location | string = ''
     var text: string = 'loading...'
 
     var progress:number = 0.5
 
-    $: console.log(progress)
-
-    let displaylocation = {name:"Berlin", lat:52, lon:13}
+    let displaylocation = {lat:52, lon:13}
 
     function startRoute(){
         text = "loading..."
@@ -27,7 +25,9 @@
             })
             .catch(err=>{
                 console.log(err)
-                displaylocation = {name:"path", lat: startLocation!.lat * (1-progress) + destLocation!.lat * (progress), lon: startLocation!.lon * (1-progress) + destLocation!.lon * (progress)}
+                if (typeof startLocation !== 'string' && typeof destLocation !== 'string') {
+                    displaylocation = {name:"path", lat: startLocation!.lat * (1-progress) + destLocation!.lat * (progress), lon: startLocation!.lon * (1-progress) + destLocation!.lon * (progress)}
+                }
                 return displaylocation;
             })
             .then(loc=>getFunFacts(loc))
@@ -49,8 +49,8 @@
     <MapView loc={displaylocation} start={startLocation} end={destLocation}/>
 
     <div id=routeplanner>
-        <LocationPicker label="Pick a start location" onlocationchange={loc=>startLocation=loc} placeholder={"Berlin"}/>
-        <LocationPicker label="Pick a destination" onlocationchange={loc=>destLocation=loc} placeholder={"Hamburg"}/>
+        <LocationPicker label="Pick a start location" onlocationchange={loc=>startLocation=loc} placeholder="Berlin"/>
+        <LocationPicker label="Pick a destination" onlocationchange={loc=>destLocation=loc} placeholder="Hamburg"/>
 
 
         <input type="range" id = rangeslider min="0" max="1" step="0.1" bind:value={progress}>
@@ -58,8 +58,8 @@
 
         <button id=routestart on:click={startRoute}>start</button>
 
-        <p>start: {startLocation?.lon} {startLocation?.lat}</p>
-        <p>destination: {destLocation?.lon} {destLocation?.lat}</p>
+        <p>start: {startLocation}</p>
+        <p>destination: {destLocation}</p>
         <p>output location: {displaylocation.lon} {displaylocation.lat}</p>
 
         <p style="max-width:50vw">{text}</p>

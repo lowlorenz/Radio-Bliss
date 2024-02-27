@@ -28,10 +28,10 @@ def get_coordinates(location):
         location = data["results"][0]["geometry"]["location"]
         latitude = location["lat"]
         longitude = location["lng"]
-        return latitude, longitude
+        return {"lat": latitude, "long": longitude}
     else:
         print(f"Error: {data['status']} - {data.get('error_message', '')}")
-        return None, None
+        return {"lat": None, "long": None}
 
 def get_route(start, dest):
     # check for being string
