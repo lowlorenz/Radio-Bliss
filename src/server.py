@@ -6,35 +6,41 @@ from pathlib import Path
 
 from tts import TTS
 from wiki import WikiParser
+from route import get_route, get_point
+
 
 dotenv_path = Path("../.env")
 load_dotenv(dotenv_path=dotenv_path)
 elevenlabs_api_key = os.getenv("ELEVENLABS_KEY")
 
+
+route = None
 app = Flask(__name__)
-tts = TTS(elevenlabs_api_key)
-wiki = WikiParser()
 
 
 @app.route("/location", methods=["GET"])
 def location():
-    start_long = request.args.get("start_long")
-    start_lat = request.args.get("start_lat")
+    start_long = float(request.args.get("start_long"))
+    start_lat = float(request.args.get("start_lat"))
 
-    destination_long = request.args.get("destination_long")
-    destination_lat = request.args.get("destination_lat")
+    destination_long = float(request.args.get("destination_long"))
+    destination_lat = float(request.args.get("destination_lat"))
 
-    traveled_distance = request.args.get("distance")
+    traveled_distance = float(request.args.get("distance"))
 
-    ...  # TODO load Minh Anh's code here
-    # long, lat = get_location(start_city, destination_city, traveled_distance)
-    long, lat = 50.1, 50.2
+    route = get_route((start_long, start_lat), (destination_long, destination_lat))
+
+    lat, long = get_point(route, distance=traveled_distance)
 
     return jsonify({"long": long, "lat": lat})
 
 
 @app.route("/audioguide", methods=["GET"])
 def audioguide():
+
+    tts = TTS(elevenlabs_api_key)
+    wiki = WikiParser()
+
     long = request.args.get("long")
     lat = request.args.get("lat")
     articles = wiki.get_articles(long, lat)
