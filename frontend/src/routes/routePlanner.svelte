@@ -1,6 +1,6 @@
 
 <script lang='ts'>
-    import { getFunFacts, getLocation } from "./api";
+    import { getAudioGuide, getFunFacts, getLocation } from "./api";
     import type { location } from "./lcoation_search";
     import LocationPicker from "./locationPicker.svelte"
     import MapView from "./mapView.svelte";
@@ -31,15 +31,44 @@
                 }
                 return displaylocation;
             })
-            .then(loc=>getFunFacts(loc))
+            .then(loc=>{
+                if (document.cookie.includes('nice')) {
+                    getAudioGuide(loc).then(playAudio)
+                }
+                return getFunFacts(loc);
+            })
             .then(facts=>{
                 text = facts.text;
-                if (synth) {
+                if (synth && !document.cookie.includes('nice')) {
                     synth.cancel();
                     const utterThis = new SpeechSynthesisUtterance(facts.text);
                     synth.speak(utterThis);
                 }
             })
+    }
+
+
+    function playAudio(mp3Blob: Blob) {
+        // Create a Blob URL from the Blob
+        var blobUrl = URL.createObjectURL(mp3Blob);
+
+        // Create a new Audio element
+        var audio = new Audio();
+
+        // Set the source of the audio element to the Blob URL
+        audio.src = blobUrl;
+
+        // Play the audio
+        audio.play()
+            .then(() => console.log("Playback started"))
+            .catch(error => console.error("Error playing the audio", error));
+
+        // Revoke the Blob URL to free up resources
+        // This can be done after the audio is no longer needed
+        audio.onended = () => {
+            URL.revokeObjectURL(blobUrl);
+            console.log("Blob URL revoked");
+        };
     }
 
 

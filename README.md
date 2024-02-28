@@ -12,4 +12,4 @@ Uses flask to provide the api. More infos in the local README.md.
 
 ## [Frontend](frontend)
 
-Uses svelte to build the UI. MOre infos in the local README.md.
+Uses svelte to build the UI. More infos in the local README.md.
