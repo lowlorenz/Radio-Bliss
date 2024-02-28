@@ -5,8 +5,11 @@
 </script>
 
 
+
 <h1> 
-    <img id=blogo src="./logo_bliss_white.svg" alt="">
+    <a href="https://bliss.berlin">    
+        <img  id=blogo src="./logo_bliss_white.svg" alt="">
+    </a>
     Welcome to Radio-Bliss
 </h1>
 
