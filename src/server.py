@@ -38,16 +38,16 @@ def location():
         (long: float, lat: float)
     """
     start = request.args.get("start")
-    if not start:
-        start_long = float(request.args.get("start_long"))
-        start_lat = float(request.args.get("start_lat"))
-        start = {"long": start_long, "lat": start_lat}
+    # if not start:
+    #     start_long = float(request.args.get("start_long", 0))
+    #     start_lat = float(request.args.get("start_lat", 0))
+    #     start = {"long": start_long, "lat": start_lat}
 
     end = request.args.get("destination")
-    if not end:
-        destination_long = float(request.args.get("destination_long"))
-        destination_lat = float(request.args.get("destination_lat"))
-        end = {"long": destination_long, "lat": destination_lat}
+    # if not end:
+    #     destination_long = float(request.args.get("destination_long", 0))
+    #     destination_lat = float(request.args.get("destination_lat", 0))
+    #     end = {"long": destination_long, "lat": destination_lat}
 
     traveled_distance = float(request.args.get("distance"))
     route, overall_distance = get_route(start, end)
