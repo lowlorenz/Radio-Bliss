@@ -1,7 +1,7 @@
 import {type location } from "./lcoation_search";
 
 // const backend_url = 'http://localhost:5000';
-const backend_url = process.env.NODE_ENV === 'production' ? 'https://boschhackathon24-ozfdfnhiga-uc.a.run.app/' : 'http://localhost:5000';
+const backend_url = process.env.NODE_ENV === 'production' ? 'https://boschhackathon24-ozfdfnhiga-uc.a.run.app' : 'http://localhost:5000';
 
 
 export async function getLocation(start:location|string, end:location|string, distance: number): Promise<location> {
