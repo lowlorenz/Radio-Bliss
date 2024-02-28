@@ -18,7 +18,7 @@
 			const loc_str = `${loc.lat},${loc.lon}`
 			container.innerHTML = `<iframe width="300" height="550" frameborder="0"  src="https://maps.google.com/maps?f=d&saddr=${start}&mrad=${loc.lat},${loc.lon}&daddr=${end}&dirflg=d&amp;output=embed"/>`
 		} else {
-			container.innerHTML = `<iframe width="300" height="550" frameborder="0"  src="https://maps.google.com/maps?q=${loc.lat},${loc.lon}&z=12&amp;output=embed"/>`
+			container.innerHTML = `<iframe frameborder="0"  src="https://maps.google.com/maps?q=${loc.lat},${loc.lon}&z=12&amp;output=embed"/>`
 		}
 	}
 	onMount(()=>update(loc))

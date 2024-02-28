@@ -14,7 +14,7 @@ input{
     margin-top: 5em;
     display: flex;
     justify-content: space-around;
-
+    margin-bottom: 4em;
 }
 
 #routeplanner{
@@ -23,7 +23,7 @@ input{
     border-radius: 1em;
     color: white;
     display: block;
-    position: absolute;
+
     left:40vw;
     text-align: left;
 }
@@ -52,10 +52,14 @@ input{
 
 
 #mapview{
-    position: absolute;
+    /* position: absolute; */
     border-radius: 2em;
     border: 1em solid silver;
     left:7vw;
+}
+
+#mapview>iframe{
+    height:550px;
 }
 
 h1{
@@ -80,14 +84,30 @@ h1{
 }
 
 @media (max-width: 600px) {
+    body{
+        margin: 0;
+        background-attachment: fixed;
+    }
+
+    #parentcontainer{
+        flex-direction: column;
+    }
+
+    #routeplanner{
+        background-color: #000a;
+    }
 
     #mapview{
         all:unset;
-        position: absolute;
+        order: 2;
+        margin:0;
+        margin-top: 2em;
         top:200vh;
         width: 100vw;
-        left:0
+        left:0;
     }
 
-
+    #mapview>iframe{
+        width:100%;
+    }
 }
