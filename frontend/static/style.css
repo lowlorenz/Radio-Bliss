@@ -1,10 +1,8 @@
 body{
     background-image: url('background.jpg');
-    background-size: cover;
-    /* color:white; */
+    background-size: 120vh;
     font-family: monospace;
     text-align: center;
-    margin-top: 8em;
     font-size: 1.5em;
 }
 
@@ -13,7 +11,7 @@ input{
 }
 
 #parentcontainer{
-    margin-top: 30vh;
+    margin-top: 5em;
     display: flex;
     justify-content: space-around;
 
@@ -61,29 +59,8 @@ input{
 }
 
 h1{
-    position: absolute;
     font-size: 3em;
-    margin: 0;
-    top:10vh;
-    left: 40vw;
-}
-
-#steeringwheel{
-    position: fixed;
-    bottom: -30vh;
-    width: 400vh;
-    left:-50vw;
-}
-
-#bgimage{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    left:-62vw;
-    background-color: aqua;
+    margin: 1em;
 }
 
 
@@ -92,4 +69,25 @@ h1{
     margin:0;
     margin-top:1em;
     margin-bottom: 1em;
+}
+
+#blogo{
+    width:3em;
+    text-shadow: black;
+    background-color: #0004;
+    border-radius: .3em;
+    margin-bottom:-.7em;
+}
+
+@media (max-width: 600px) {
+
+    #mapview{
+        all:unset;
+        position: absolute;
+        top:200vh;
+        width: 100vw;
+        left:0
+    }
+
+
 }
