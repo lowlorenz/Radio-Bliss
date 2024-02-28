@@ -18,6 +18,7 @@
 
     function startRoute(){
         text = "loading..."
+        if (synth) synth.cancel();  // stop speaking when a new request is send
         getLocation(startLocation!, destLocation!, progress)
             .then(loc=>{
                 displaylocation = loc
@@ -26,7 +27,7 @@
             .catch(err=>{
                 console.log(err)
                 if (typeof startLocation !== 'string' && typeof destLocation !== 'string') {
-                    displaylocation = {name:"path", lat: startLocation!.lat * (1-progress) + destLocation!.lat * (progress), lon: startLocation!.lon * (1-progress) + destLocation!.lon * (progress)}
+                    displaylocation = {lat: startLocation!.lat * (1-progress) + destLocation!.lat * (progress), lon: startLocation!.lon * (1-progress) + destLocation!.lon * (progress)}
                 }
                 return displaylocation;
             })
